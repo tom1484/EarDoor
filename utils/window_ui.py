@@ -28,7 +28,7 @@ class Ui_Form(object):
         self.identity_frame.setFrameShadow(QtWidgets.QFrame.Plain)
         self.identity_frame.setObjectName("identity_frame")
         self.identity_frame_title = QtWidgets.QLabel(self.identity_frame)
-        self.identity_frame_title.setGeometry(QtCore.QRect(0, 0, 301, 31))
+        self.identity_frame_title.setGeometry(QtCore.QRect(0, -1, 301, 32))
         font = QtGui.QFont()
         font.setFamily("微軟正黑體")
         font.setPointSize(10)
