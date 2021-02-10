@@ -127,8 +127,19 @@ border: 1px solid black;</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>微軟正黑體</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -180,8 +191,17 @@ border: 1px solid black;</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>微軟正黑體</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -233,16 +253,25 @@ border: 1px solid black;</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>微軟正黑體</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
      <property name="text">
       <string/>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
    </widget>
   </widget>
-  <widget class="QFrame" name="record_frame">
+  <widget class="QFrame" name="records_frame">
    <property name="geometry">
     <rect>
      <x>950</x>
@@ -261,7 +290,7 @@ border: 1px solid black;</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QListView" name="record">
+   <widget class="QListView" name="records">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -284,10 +313,14 @@ border: 1px solid black;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: white;
-border: 1px solid black;</string>
+border: 1px solid black;
+text-align: center;</string>
     </property>
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="textElideMode">
+     <enum>Qt::ElideMiddle</enum>
     </property>
     <property name="flow">
      <enum>QListView::TopToBottom</enum>
@@ -321,7 +354,7 @@ border: 1px solid black;</string>
 border: 1px solid black;</string>
     </property>
     <property name="text">
-     <string>通關紀錄</string>
+     <string>歷史紀錄</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

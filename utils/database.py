@@ -21,8 +21,8 @@ class Database:
             except Error as e:
                 print('Failed:', e)
 
-    def select(self, id, name):
-        sql = f'SELECT Records FROM {self.table} WHERE ID=\'{id}\' AND Name=\'{name}\';'
+    def select(self, name):
+        sql = f'SELECT Records FROM {self.table} WHERE Name=\'{name}\';'
         print(sql)
 
         try:
@@ -31,32 +31,15 @@ class Database:
 
             cursor = self.conn.cursor()
             cursor.execute(sql)
-            record = cursor.fetchone()[0]
-            return record
+            raw = cursor.fetchone()[0]
+            return json.loads(raw)
 
         except Error as e:
             print('Failed:', e)
             return -1
 
-    def update(self, id, name, records):
-        sql = f'UPDATE {self.table} SET Records=\'{records}\' WHERE ID=\'{id}\' AND Name=\'{name}\';'
-        print(sql)
-
-        try:
-            if not hasattr(self, 'conn') or not self.conn.is_connected():
-                self.connect()
-
-            cursor = self.conn.cursor()
-            cursor.execute(sql)
-            self.conn.commit()
-            return 1
-
-        except Error as e:
-            print('Failed:', e)
-            return -1
-
-    def insert(self, id, name, records):
-        sql = f'INSERT INTO {self.table} (ID, Name, Records) VALUES (\'{id}\', \'{name}\', \'{records}\');'
+    def update(self, name, records):
+        sql = f'UPDATE {self.table} SET Records=\'{records}\' WHERE Name=\'{name}\';'
         print(sql)
 
         try:
@@ -72,8 +55,8 @@ class Database:
             print('Failed:', e)
             return -1
 
-    def delete(self, id, name):
-        sql = f'DELETE FROM {self.table} WHERE ID=\'{id}\' AND Name=\'{name}\';'
+    def insert(self, name, records):
+        sql = f'INSERT INTO {self.table} (Name, Records) VALUES (\'{name}\', \'{records}\');'
         print(sql)
 
         try:
@@ -89,10 +72,26 @@ class Database:
             print('Failed:', e)
             return -1
 
-    def add_record(self, id, name, record):
-        raw = self.select(id, name)
-        records = json.loads(raw)
+    def delete(self, name):
+        sql = f'DELETE FROM {self.table} WHERE Name=\'{name}\';'
+        print(sql)
+
+        try:
+            if not hasattr(self, 'conn') or not self.conn.is_connected():
+                self.connect()
+
+            cursor = self.conn.cursor()
+            cursor.execute(sql)
+            self.conn.commit()
+            return 1
+
+        except Error as e:
+            print('Failed:', e)
+            return -1
+
+    def add_record(self, name, record):
+        records = self.select(name)
 
         records.append(record)
         records = json.dumps(records)
-        self.update(id, name, records)
+        self.update(name, records)

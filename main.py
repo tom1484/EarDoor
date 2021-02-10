@@ -11,6 +11,8 @@ from utils.database import Database
 app = QApplication(sys.argv)
 w = Window()
 
+# w.processFrame()
+
 # display window
 w.show()
 sys.exit(app.exec_())

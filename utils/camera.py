@@ -32,7 +32,7 @@ class Camera:
         x2 = mid_x + w // 2
 
         frame = frame[y1:y2, x1:x2]
-        displayFrame = cv2.resize(frame, (self.width, self.height))
+        frame = cv2.resize(frame, (self.width, self.height))
 
-        return frame, displayFrame
+        return frame
 
