@@ -11,7 +11,7 @@ class IdentityUpdater:
         self.time = -10
 
     def update(self, name):
-        if time.time() - self.time < 5:
+        if time.time() - self.time < 20:
             return
 
         now = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")

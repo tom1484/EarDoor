@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1250</width>
+    <width>1550</width>
     <height>950</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>951</width>
+     <width>1251</width>
      <height>951</height>
     </rect>
    </property>
@@ -32,7 +32,7 @@
   <widget class="QFrame" name="identity_frame">
    <property name="geometry">
     <rect>
-     <x>950</x>
+     <x>1250</x>
      <y>0</y>
      <width>301</width>
      <height>121</height>
@@ -274,7 +274,7 @@ border: 1px solid black;</string>
   <widget class="QFrame" name="records_frame">
    <property name="geometry">
     <rect>
-     <x>950</x>
+     <x>1250</x>
      <y>120</y>
      <width>301</width>
      <height>831</height>
@@ -332,7 +332,7 @@ text-align: center;</string>
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="record_frame_title">
+   <widget class="QLabel" name="records_frame_title">
     <property name="geometry">
      <rect>
       <x>0</x>

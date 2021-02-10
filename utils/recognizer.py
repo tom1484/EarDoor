@@ -56,10 +56,10 @@ class Recognizer:
             roi = cv2.resize(roi, (200, 200), interpolation=cv2.INTER_LINEAR)
 
             params = self.model_LBPH.predict(roi)
-            if params[1] > 110:
+            if 110 <= params[1] <= 112:
                 print("Label: %s, Confidence: %.2f" % (params[0], params[1]))
-                frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-                cv2.putText(frame, self.names[params[0]], (x, y - 35), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
+                frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                cv2.putText(frame, self.names[params[0]], (x, y - 35), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
                 return self.names[params[0]], frame
 
         return None, frame
