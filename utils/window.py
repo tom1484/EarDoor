@@ -21,7 +21,7 @@ class Window(QDialog):
         self.ui.records.setModel(slm)
         self.updater = Updater(self.ui, db, slm)
 
-        self.camera = Camera(1, self.ui.frame.width(), self.ui.frame.height())
+        self.camera = Camera(0, self.ui.camera.width(), self.ui.camera.height())
         self.recognizer = Recognizer()
 
         self.fps = 50

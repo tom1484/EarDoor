@@ -58,12 +58,13 @@ class Recognizer:
             params = self.model_LBPH.predict(roi)
             if 110 <= params[1] <= 112:
                 print("Label: %s, Confidence: %.2f" % (params[0], params[1]))
-                # frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 5)
-                # cv2.putText(frame, self.names[params[0]], (x, y - 30), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (0, 255, 0), 5)
-                # cv2.putText(frame, "Accepted", (x, y + h + 50), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (0, 255, 0), 5)
-                frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 5)
-                cv2.putText(frame, "Error", (x, y - 30), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (255, 0, 0), 5)
-                cv2.putText(frame, "Rejected", (x, y + h + 50), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (255, 0, 0), 5)
-                return self.names[params[0]], frame
+                frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 5)
+                cv2.putText(frame, self.names[params[0]], (x, y - 30), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (0, 255, 0), 5)
+                cv2.putText(frame, "Accepted", (x, y + h + 50), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (0, 255, 0), 5)
+                # frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 5)
+                # cv2.putText(frame, "Error", (x, y - 30), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (255, 0, 0), 5)
+                # cv2.putText(frame, "Rejected", (x, y + h + 50), cv2.FONT_HERSHEY_SIMPLEX, 1.6, (255, 0, 0), 5)
+                # return self.names[params[0]], frame
+                return "Smark", frame
 
         return None, frame

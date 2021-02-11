@@ -21,9 +21,9 @@ class Database:
             except Error as e:
                 print('Failed:', e)
 
-    def select(self, name):
+    def select_records(self, name):
         sql = f'SELECT Records FROM {self.table} WHERE Name=\'{name}\';'
-        print(sql)
+        # print(sql)
 
         try:
             if not hasattr(self, 'conn') or not self.conn.is_connected():
@@ -38,9 +38,25 @@ class Database:
             print('Failed:', e)
             return -1
 
-    def update(self, name, records):
+    def select_image(self, name):
+        sql = f'SELECT Image FROM {self.table} WHERE Name=\'{name}\';'
+        # print(sql)
+
+        try:
+            if not hasattr(self, 'conn') or not self.conn.is_connected():
+                self.connect()
+
+            cursor = self.conn.cursor()
+            cursor.execute(sql)
+            return cursor.fetchone()[0]
+
+        except Error as e:
+            print('Failed:', e)
+            return -1
+
+    def update_records(self, name, records):
         sql = f'UPDATE {self.table} SET Records=\'{records}\' WHERE Name=\'{name}\';'
-        print(sql)
+        # print(sql)
 
         try:
             if not hasattr(self, 'conn') or not self.conn.is_connected():
@@ -55,9 +71,26 @@ class Database:
             print('Failed:', e)
             return -1
 
-    def insert(self, name, records):
-        sql = f'INSERT INTO {self.table} (Name, Records) VALUES (\'{name}\', \'{records}\');'
-        print(sql)
+    def update_image(self, name, image):
+        sql = f'UPDATE {self.table} SET Image=\'{image}\' WHERE Name=\'{name}\';'
+        # print(sql)
+
+        try:
+            if not hasattr(self, 'conn') or not self.conn.is_connected():
+                self.connect()
+
+            cursor = self.conn.cursor()
+            cursor.execute(sql)
+            self.conn.commit()
+            return 1
+
+        except Error as e:
+            print('Failed:', e)
+            return -1
+
+    def insert(self, name):
+        sql = f'INSERT INTO {self.table} (Name, Records) VALUES (\'{name}\', \'[]\');'
+        # print(sql)
 
         try:
             if not hasattr(self, 'conn') or not self.conn.is_connected():
@@ -74,7 +107,7 @@ class Database:
 
     def delete(self, name):
         sql = f'DELETE FROM {self.table} WHERE Name=\'{name}\';'
-        print(sql)
+        # print(sql)
 
         try:
             if not hasattr(self, 'conn') or not self.conn.is_connected():
@@ -90,8 +123,8 @@ class Database:
             return -1
 
     def add_record(self, name, record):
-        records = self.select(name)
+        records = self.select_records(name)
 
         records.append(record)
         records = json.dumps(records)
-        self.update(name, records)
+        self.update_records(name, records)

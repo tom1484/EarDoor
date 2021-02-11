@@ -1,5 +1,8 @@
-from datetime import datetime
 import time
+import base64
+import io
+from imageio import imread
+from datetime import datetime
 
 from PyQt5.QtGui import QImage, QPixmap
 
@@ -13,11 +16,24 @@ class Updater:
         self.time = -10
 
     def update(self, name, frame):
-        if time.time() - self.time > 5:
+        if time.time() - self.time > 10:
             self.updateFrame(frame)
             if name is not None:
+                self.updateImage(name)
                 self.updateIdentity(name)
                 self.time = time.time()
+
+    def updateImage(self, name):
+        raw = self.db.select_image(name)
+        img = imread(io.BytesIO(base64.b64decode(raw)))
+
+        img = QImage(img, img.shape[1], img.shape[0],
+                     img.shape[1] * 3, QImage.Format_RGB888)
+        img = QPixmap.fromImage(img)
+
+        # display image
+        self.ui.picture.setPixmap(img)
+        self.ui.picture.setScaledContents(True)
 
     def updateIdentity(self, name):
         now = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
@@ -27,7 +43,7 @@ class Updater:
         self.ui.time.setText(now)
         self.ui.location.setText("NTNU")
 
-        records = self.db.select(name)
+        records = self.db.select_records(name)
         self.slm.setStringList(records)
 
     def updateFrame(self, frame):
@@ -37,5 +53,5 @@ class Updater:
         img = QPixmap.fromImage(img)
 
         # display image
-        self.ui.frame.setPixmap(img)
-        self.ui.frame.setScaledContents(True)
+        self.ui.camera.setPixmap(img)
+        self.ui.camera.setScaledContents(True)
