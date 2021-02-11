@@ -171,13 +171,20 @@ class Ui_Form(object):
         font.setItalic(False)
         font.setWeight(75)
         self.records.setFont(font)
+        self.records.setAutoFillBackground(False)
         self.records.setStyleSheet("background-color: white;\n"
 "border: 0px;")
+        self.records.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.records.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.records.setTextElideMode(QtCore.Qt.ElideMiddle)
+        self.records.setMovement(QtWidgets.QListView.Static)
         self.records.setFlow(QtWidgets.QListView.TopToBottom)
+        self.records.setProperty("isWrapping", False)
+        self.records.setResizeMode(QtWidgets.QListView.Fixed)
+        self.records.setViewMode(QtWidgets.QListView.ListMode)
         self.records.setUniformItemSizes(False)
         self.records.setWordWrap(True)
+        self.records.setItemAlignment(QtCore.Qt.AlignCenter)
         self.records.setObjectName("records")
         self.picture_frame = QtWidgets.QFrame(Form)
         self.picture_frame.setGeometry(QtCore.QRect(1030, 10, 240, 240))
@@ -194,6 +201,7 @@ class Ui_Form(object):
         self.picture.setStyleSheet("background-color: white;\n"
 "border: 2px solid gray;")
         self.picture.setText("")
+        self.picture.setScaledContents(True)
         self.picture.setWordWrap(True)
         self.picture.setObjectName("picture")
         self.camera_style_frame = QtWidgets.QFrame(Form)
@@ -211,6 +219,7 @@ class Ui_Form(object):
         self.camera.setStyleSheet("background-color: white;\n"
 "border: 2px solid gray;")
         self.camera.setText("")
+        self.camera.setScaledContents(True)
         self.camera.setObjectName("camera")
 
         self.retranslateUi(Form)

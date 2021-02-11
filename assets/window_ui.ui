@@ -379,9 +379,15 @@ border-top-right-radius: 15px;
        <bold>true</bold>
       </font>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: white;
 border: 0px;</string>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustIgnored</enum>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -389,14 +395,29 @@ border: 0px;</string>
      <property name="textElideMode">
       <enum>Qt::ElideMiddle</enum>
      </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
      <property name="flow">
       <enum>QListView::TopToBottom</enum>
+     </property>
+     <property name="isWrapping" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="resizeMode">
+      <enum>QListView::Fixed</enum>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::ListMode</enum>
      </property>
      <property name="uniformItemSizes">
       <bool>false</bool>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
+     </property>
+     <property name="itemAlignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -438,6 +459,9 @@ border: 2px solid gray;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
@@ -481,6 +505,9 @@ border: 2px solid gray;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

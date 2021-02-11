@@ -16,26 +16,26 @@ class Updater:
         self.time = -10
 
     def update(self, name, frame):
-        if time.time() - self.time > 10:
+        if time.time() - self.time > 5:
             self.updateFrame(frame)
+            self.clearIdentity()
             if name is not None:
-                self.updateImage(name)
                 self.updateIdentity(name)
                 self.time = time.time()
 
-    def updateImage(self, name):
-        raw = self.db.select_image(name)
-        img = imread(io.BytesIO(base64.b64decode(raw)))
+    def clearIdentity(self):
+        # clear information
+        self.ui.name.setText('')
+        self.ui.time.setText('')
+        self.ui.location.setText('')
 
-        img = QImage(img, img.shape[1], img.shape[0],
-                     img.shape[1] * 3, QImage.Format_RGB888)
-        img = QPixmap.fromImage(img)
+        self.slm.setStringList([])
 
-        # display image
-        self.ui.picture.setPixmap(img)
-        self.ui.picture.setScaledContents(True)
+        # clear image
+        self.ui.picture.setPixmap(QPixmap())
 
     def updateIdentity(self, name):
+        # update information
         now = datetime.now().strftime("%Y/%m/%d, %H:%M:%S")
         self.db.add_record(name, now)
 
@@ -45,6 +45,16 @@ class Updater:
 
         records = self.db.select_records(name)
         self.slm.setStringList(records)
+
+        # update image
+        raw = self.db.select_image(name)
+        img = imread(io.BytesIO(base64.b64decode(raw)))
+
+        img = QImage(img, img.shape[1], img.shape[0],
+                     img.shape[1] * 3, QImage.Format_RGB888)
+        img = QPixmap.fromImage(img)
+
+        self.ui.picture.setPixmap(img)
 
     def updateFrame(self, frame):
         # convert image to QPixmap
