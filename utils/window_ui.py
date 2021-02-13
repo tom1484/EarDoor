@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1360, 950)
+        Form.resize(1650, 950)
         self.identity_frame = QtWidgets.QFrame(Form)
-        self.identity_frame.setGeometry(QtCore.QRect(950, 260, 400, 165))
+        self.identity_frame.setGeometry(QtCore.QRect(1240, 260, 400, 165))
         self.identity_frame.setStyleSheet("#identity_frame {\n"
 "    background-color: #EEEEEE;\n"
 "    border: 2px solid black;\n"
@@ -127,7 +127,7 @@ class Ui_Form(object):
         self.location.setReadOnly(True)
         self.location.setObjectName("location")
         self.records_frame = QtWidgets.QFrame(Form)
-        self.records_frame.setGeometry(QtCore.QRect(950, 435, 400, 505))
+        self.records_frame.setGeometry(QtCore.QRect(1240, 435, 400, 505))
         self.records_frame.setStyleSheet("#records_frame {\n"
 "    background-color: #EEEEEE;\n"
 "    border: 2px solid black;\n"
@@ -184,10 +184,10 @@ class Ui_Form(object):
         self.records.setViewMode(QtWidgets.QListView.ListMode)
         self.records.setUniformItemSizes(False)
         self.records.setWordWrap(True)
-        self.records.setItemAlignment(QtCore.Qt.AlignCenter)
+        self.records.setItemAlignment(QtCore.Qt.AlignHCenter)
         self.records.setObjectName("records")
         self.picture_frame = QtWidgets.QFrame(Form)
-        self.picture_frame.setGeometry(QtCore.QRect(1030, 10, 240, 240))
+        self.picture_frame.setGeometry(QtCore.QRect(1320, 10, 240, 240))
         self.picture_frame.setStyleSheet("#picture_frame {\n"
 "    background-color: #EEEEEE;\n"
 "    border: 2px solid black;\n"
@@ -205,7 +205,7 @@ class Ui_Form(object):
         self.picture.setWordWrap(True)
         self.picture.setObjectName("picture")
         self.camera_style_frame = QtWidgets.QFrame(Form)
-        self.camera_style_frame.setGeometry(QtCore.QRect(10, 10, 930, 930))
+        self.camera_style_frame.setGeometry(QtCore.QRect(10, 10, 1220, 930))
         self.camera_style_frame.setStyleSheet("#camera_style_frame {\n"
 "    background-color: #EEEEEE;\n"
 "    border: 2px solid black;\n"
@@ -215,7 +215,7 @@ class Ui_Form(object):
         self.camera_style_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.camera_style_frame.setObjectName("camera_style_frame")
         self.camera = QtWidgets.QLabel(self.camera_style_frame)
-        self.camera.setGeometry(QtCore.QRect(10, 10, 910, 910))
+        self.camera.setGeometry(QtCore.QRect(10, 10, 1200, 910))
         self.camera.setStyleSheet("background-color: white;\n"
 "border: 2px solid gray;")
         self.camera.setText("")

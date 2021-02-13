@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1360</width>
+    <width>1650</width>
     <height>950</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QFrame" name="identity_frame">
    <property name="geometry">
     <rect>
-     <x>950</x>
+     <x>1240</x>
      <y>260</y>
      <width>400</width>
      <height>165</height>
@@ -286,7 +286,7 @@ border-radius: 15px;</string>
   <widget class="QFrame" name="records_frame">
    <property name="geometry">
     <rect>
-     <x>950</x>
+     <x>1240</x>
      <y>435</y>
      <width>400</width>
      <height>505</height>
@@ -417,7 +417,7 @@ border: 0px;</string>
       <bool>true</bool>
      </property>
      <property name="itemAlignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignHCenter</set>
      </property>
     </widget>
    </widget>
@@ -425,7 +425,7 @@ border: 0px;</string>
   <widget class="QFrame" name="picture_frame">
    <property name="geometry">
     <rect>
-     <x>1030</x>
+     <x>1320</x>
      <y>10</y>
      <width>240</width>
      <height>240</height>
@@ -473,7 +473,7 @@ border: 2px solid gray;</string>
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>930</width>
+     <width>1220</width>
      <height>930</height>
     </rect>
    </property>
@@ -495,7 +495,7 @@ border: 2px solid gray;</string>
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>910</width>
+      <width>1200</width>
       <height>910</height>
      </rect>
     </property>
