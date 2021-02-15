@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 
-from utils.window import Window
+from utils.startup import Window
 
 
 # create variables for running window
