@@ -8,8 +8,6 @@ from utils.startup import Window
 app = QApplication(sys.argv)
 w = Window()
 
-# w.processFrame()
-
 # display window
 w.show()
 sys.exit(app.exec_())
